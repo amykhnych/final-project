@@ -89,7 +89,7 @@ class Shapes(Scene):
         self.add(circle, square, triangle,text)
         self.wait(1)
 
-import numpy as np
+import numpy as np # have no idea what this does
 
 class PythorianTheorem(Scene):
 
@@ -163,3 +163,4 @@ class PythorianTheorem(Scene):
         self.play(MoveAlongPath(dot, tri1), run_time=5, rate_func=linear)
         self.remove(dot)
         self.wait()
+        self.play(Rotate(sqr, PI/4))
