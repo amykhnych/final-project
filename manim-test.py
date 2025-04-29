@@ -1,35 +1,5 @@
 from manim import *
 
-
-class CreateCircle(Scene):
-    def construct(me):
-        triangle = Triangle().shift(LEFT)  # create a circle
-        triangle.set_fill(RED, opacity=0.5)  # set the color and transparency
-        me.play(Create(triangle))  # show the circle on screen
-        square = Square()
-        square.set_fill(RED, opacity=0.5)
-        me.play(Create(square))
-        me.play(Rotate(square, PI/4))
-
-
-class BezierSplineExample(Scene):
-    def construct(self):
-        p1 = np.array([-3, 1, 0])
-        p1b = p1 + [1, 0, 0]
-        d1 = Dot(point=p1).set_color(BLUE)
-        l1 = Line(p1, p1b)
-        p2 = np.array([3, -1, 0])
-        p2b = p2 - [1, 0, 0]
-        d2 = Dot(point=p2).set_color(RED)
-        l2 = Line(p2, p2b)
-        bezier = CubicBezier(p1b, p1b + 3 * RIGHT, p2b - 3 * RIGHT, p2b)
-        self.add(l1, d1, l2, d2, bezier)
-        self.play(
-           # bezier.animate.set_fill(PINK, opacity=0.5)
-        )
-        
-
-
 class SquareToCircle(Scene):
     def construct(self):
         circle = Circle()  # create a circle
@@ -52,6 +22,7 @@ class SquareAndCircle(Scene):
 
         square.next_to(circle, RIGHT, buff=0.5)  # set the position
         self.play(Create(circle), Create(square))  # show the shapes on screen
+
 class AnimatedSquareToCircle(Scene):
     def construct(self):
         circle = Circle()  # create a circle
@@ -72,22 +43,6 @@ class DifferentRotations(Scene):
             left_square.animate.rotate(PI), Rotate(right_square, angle=PI), run_time=2
         )
         self.wait()
-
-from manim import *
-
-class Shapes(Scene):
-    def construct(self):
-        circle = Circle()
-        square = Square()
-        triangle = Triangle()
-        text = Text("хуй")
-
-        circle.move_to([1,3,1])
-        square.shift(UP)
-        triangle.shift(RIGHT)
-
-        self.add(circle, square, triangle,text)
-        self.wait(1)
 
 import numpy as np # have no idea what this does
 
@@ -133,19 +88,12 @@ class PythorianTheorem(Scene):
 
         self.play(Transform(tri1, tri1_2),Transform(tri2, tri2_2),Transform(tri3, tri3_2),Transform(tri4, tri4_2))
 
+        #tri1.align_to(sqr, UP)
+
         sqr = Polygram([e,b,k,i],[h,i,j,d])
         sqr.set_fill(TEAL, opacity=0.5)
 
         self.play(Create(sqr))
-
-        self.play(
-            Rotate(
-                sqr,
-                angle=2*PI,
-                about_point=ORIGIN,
-                rate_func=linear,
-            )
-            )
 
         #text1 = Text(str(a)).move_to(a)
         #text2 = Text(str(b)).move_to(b)
